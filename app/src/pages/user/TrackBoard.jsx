@@ -6,7 +6,9 @@ import { ChartTooltip, ChartTooltipContent, ChartLegend, ChartLegendContent } fr
 
 
 import { ChartContainer } from "@/components/ui/chart"
+import { useNavigate } from 'react-router-dom';
 function TrackBoard() {
+    const navigate = useNavigate();
 
     const chartData = [
         { month: "January", desktop: 186, mobile: 80 },
@@ -27,6 +29,11 @@ function TrackBoard() {
         },
     }
 
+    function onCreateIssueClicked() {
+        navigate('/issues/new');
+
+    }
+
     return (
         <>
 
@@ -35,7 +42,7 @@ function TrackBoard() {
 
                 <div className="flex justify-end  mt-10">
 
-                    <div className="flex justify-center items-center px-6 py-2 bg-yellow-300 rounded-lg cursor-pointer">
+                    <div className="flex justify-center items-center px-6 py-2 bg-yellow-300 rounded-lg cursor-pointer" onClick={onCreateIssueClicked}>
                         <FaPlus />
                         <p className='ml-3 '>Raise Issue</p>
 
@@ -50,7 +57,7 @@ function TrackBoard() {
 
 
 
-                    <div className="mt-10 bg-zinc-200 py-4 px-8">
+                    <div className="mt-10 bg-zinc-200 py-4 px-8 rounded">
                         <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
 
                             <BarChart accessibilityLayer data={chartData}>

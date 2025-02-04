@@ -3,9 +3,10 @@ const cors = require("cors");
 const app = express();
 const userRouter = require("./routes/user.routes");
 const issueRouter = require("./routes/issue.routes")
+const authRoutes = require("./routes/auth.routes");
 require('./config/db.config')
 
-Middlewares
+// Middlewares
 
 app.use(cors());
 app.use(express.json());
@@ -14,9 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/user', userRouter);
 app.use('/issues', issueRouter);
-
-
-
+app.use('/auth', authRoutes);
 
 
 app.listen(3000, () => console.log("Server is listening on PORT: 3000"));

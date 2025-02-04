@@ -25,15 +25,9 @@ function IssuesCard() {
                     <Button variant="secondary">6 <ChevronUp /></Button>
                     <Button variant="destructive" >7 <ChevronDown /></Button>
                 </div>
-
-
-
             </div>
-
-
-
-
-        </div></>
+        </div>
+        </>
     )
 }
 

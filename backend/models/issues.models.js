@@ -13,9 +13,26 @@ const issueSchema = mongoose.Schema({
         required: true,
 
     },
+    createBy: {
+        type: String,
+        required: true,
+    },
+    issueImage: {
+        type: String
+    },
     issueCreatedOn: Date.now,
-    issueImage: {}
+    issueLastUpdatedOn: {
+        type: Date,
+    },
+    issueFiles: {
 
+    },
+    upVotes: {
+        type: String,
+    },
+    downVotes: {
+        type: String
+    }
 
 })
 

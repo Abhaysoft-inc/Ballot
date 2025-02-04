@@ -19,21 +19,6 @@ router.get('/:id', (req, res) => {
 
 // Registering a user
 
-router.post('/signup', (req, res) => {
-    const { fullname, email, phone, password, address } = req.body;
 
-    userModel.create({
-        email: email,
-        fullName: fullname,
-        password: password,
-        phone: phone,
-        address: address,
-    })
-
-    res.send("hi")
-
-
-
-})
 
 module.exports = router
