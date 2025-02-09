@@ -13,14 +13,14 @@ const issueSchema = mongoose.Schema({
         required: true,
 
     },
-    createBy: {
+    createdBy: {
         type: String,
         required: true,
     },
     issueImage: {
         type: String
     },
-    issueCreatedOn: Date.now,
+    issueCreatedOn: Date,
     issueLastUpdatedOn: {
         type: Date,
     },

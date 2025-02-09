@@ -23,7 +23,7 @@ router.post('/signup', async (req, res) => {
 
 
 
-    createUser = await userModel.create({
+    const createUser = await userModel.create({
         email: email,
         fullName: fullName,
         password: hashedPassword,
@@ -79,12 +79,10 @@ router.post('/login', async (req, res) => {
         return res.status(401).json({
             msg: "email or password is incorrect",
         });
-
     }
 
     return res.status(200).json({
         msg: "Login Successfull"
-
     });
 
 

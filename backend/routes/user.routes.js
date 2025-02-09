@@ -5,19 +5,23 @@ const router = express.Router();
 
 // Fetching All Users 
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
+    const users = await userModel.find({})
+    res.send(users);
 });
 
 
 // Fetching one user
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    res.send(id);
+    const user = await userModel.findOne({
+        _id: id,
+    })
+    res.send(user);
 });
 
-// Registering a user
 
 
 

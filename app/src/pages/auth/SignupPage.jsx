@@ -1,156 +1,49 @@
-import { CornerDownRight } from 'lucide-react';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import {
-    Form,
-    FormControl,
+import React from 'react'
+import AuthNav from './AuthNav'
 
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardTitle } from '@/components/ui/card';
-
-// Define the schema using zod
-const FormSchema = z.object({
-    username: z.string().min(2, {
-        message: 'Username must be at least 2 characters.',
-    }),
-    password: z.string().min(6),
-    fullname: z.string(),
-    address: z.string(),
-    mobile: z.string(),
-    email: z.string(),
-});
-
-function SignUpPage() {
-    // Set up the form using React Hook Form and Zod resolver
-    const form = useForm({
-        resolver: zodResolver(FormSchema),
-        defaultValues: {
-            username: '',
-            password: '',
-        },
-    });
-
-    // Function to handle form submission
-    function onSubmit(data) {
-        console.log({
-            msg: data,
-        });
-    }
-
+function SignupPage() {
     return (
         <>
-            {/* Navigation Bar */}
-            <nav className="flex justify-between text-white px-14 py-6 items-center">
-                <Link to={'/'}>
-                    <p className="space-grotesk text-2xl font-bold"> ballot.</p>
-                </Link>
-                <Link to={'/login'}>
-                    <p className="geist flex gap-3 items-center">
-                        <CornerDownRight /> Login
-                    </p></Link>
-            </nav>
+            <AuthNav />
+            <form action="post">
+                <div className="container flex justify-center items-center mt-12">
+                    <div className="form card  w-[40%] bg-transparent border rounded px-2 align-middle items-center py-6 space-y-3">
+                        <p className="mx-3.5 text-white text-xl mb-[25px]">Sign Up</p>
 
-            {/* Main Content */}
-            <div className="main mt-20 flex justify-center geist">
-                <Card className="w-[450px]  border border-white bg-transparent">
+                        <div className="group flex justify-center gap-6">
+                            <input type="text" name="firstName" className='rounded bg-transparent border-slate-300 border text-white px-2 py-1 text-lg' placeholder='First Name' id="" required />
+                            <input type="text" name="lastName" className='rounded bg-transparent border-slate-300 border text-white px-2 py-1 text-lg' placeholder='Last Name' id="" required />
+                        </div>
+                        <div className="flex justify-center ">
+                            <input type="email" name="email" className='rounded bg-transparent border-slate-300 border text-white px-2 py-1 text-lg w-full mx-[.80rem]' placeholder='Email' id="" required />
+                        </div>
 
-                    <CardTitle className="text-white px-6 mt-6">Create an Account</CardTitle>
-                    <CardContent className="mt-10">
-                        <Form {...form}>
+                        <div className="flex justify-center ">
+                            <input type="password" name="firstName" className='rounded bg-transparent border-slate-300 border text-white px-2 py-1 text-lg w-full mx-[.80rem]' placeholder='Password' id="" required />
+                        </div>
 
+                        <div className="flex justify-center ">
+                            <input type="password" name="firstName" className='rounded bg-transparent border-slate-300 border text-white px-2 py-1 text-lg w-full mx-[.80rem]' placeholder='Confirm Password' id="" required />
+                        </div>
 
+                        <div className="flex justify-center ">
+                            <input type="" name="phone" className='rounded bg-transparent border-slate-300 border text-white px-2 py-1 text-lg w-full mx-[.80rem]' placeholder='Phone' id="" required />
+                        </div>
 
+                        <div className="flex justify-center ">
+                            <input type="text" name="address" className='rounded bg-transparent border-slate-300 border text-white px-2 py-1 text-lg w-full mx-[.80rem]' placeholder='Address' id="" required />
+                        </div>
 
-                            <FormField
-                                control={form.control}
-                                name="fullname"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-white">Full Name</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Full Name" {...field} />
-                                        </FormControl>
-                                        {/* <FormDescription>This is your public display name.</FormDescription> */}
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <div className="flex gap-3 mt-3">
-                                <FormField className=""
-                                    control={form.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-white mt-4">Email</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Email" type="email"  {...field} />
-                                            </FormControl>
-                                            {/* <FormDescription>This is your public display name.</FormDescription> */}
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField className=""
-                                    control={form.control}
-                                    name="phone"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-white mt-4">Phone</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Phone" type="number"  {...field} />
-                                            </FormControl>
-                                            {/* <FormDescription>This is your public display name.</FormDescription> */}
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                            </div>
-
-                            <FormField className=""
-                                control={form.control}
-                                name="address"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-white mt-4">Address</FormLabel>
-                                        <FormControl>
-                                            <Input placeholder="Address" type="text"  {...field} />
-                                        </FormControl>
-                                        {/* <FormDescription>This is your public display name.</FormDescription> */}
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-
-                            <Button className="mt-4 bg-white text-black">Signup</Button>
+                        <div className="mx-3.5">
+                            <button className='bg-white px-2.5 py-1.5 font-[450] rounded mt-2' type='submit'>Create Account</button>
+                        </div>
 
 
-
-
-                        </Form>
-
-
-
-
-                    </CardContent>
-
-
-
-                </Card>
-
-            </div>
+                    </div>
+                </div>
+            </form>
         </>
-    );
+    )
 }
 
-export default SignUpPage;
+export default SignupPage
